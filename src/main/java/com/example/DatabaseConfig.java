@@ -10,12 +10,11 @@ import java.sql.SQLException;
 
 @Configuration
 public class DatabaseConfig {
-
     private MysqlDataSource datasource = new MysqlDataSource();
 
     public DatabaseConfig() {
-        datasource.setPort(3306) default config
-        datasource.setURL("jdbc:mysql://localhost:3306/mongodb");
+                datasource.setPort(3306); //default config
+        datasource.setURL("jdbc:mysql://localhost:3306/mysqldb");
     }
 
     @Bean
