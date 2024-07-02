@@ -1,12 +1,14 @@
-FROM node:20-alpine
+FROM openjdk:17.0.2-jdk
 
-RUN mkdir -p /home/app
+# Expose port 8080 for the app
+EXPOSE 8080
 
-COPY ./scr/main /home/app
+# Make the image app folder and copy the app to it
+RUN mkdir -p /opt/app
+COPY ./build/libs/docker-exercises-project-1.0-SNAPSHOT.jar /opt/app
 
-# set default dir so that next commands executes in /home/app dir
-WORKDIR /home/app
+# Set the working directory inside the image
+WORKDIR /opt/app
 
-# TODO: install software to run the application (use the RUN command)
-
-# Start the application (use the CMD ["", ""] command)
+# Start the java app
+CMD ["java", "-jar", "docker-exercises-project-1.0-SNAPSHOT.jar"]
