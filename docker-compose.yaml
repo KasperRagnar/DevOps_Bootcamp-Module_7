@@ -1,0 +1,48 @@
+version: '3.1'
+services:
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      # user setup
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PWD}
+      # root username setup
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PWD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin:5.2
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      PMA_HOST: ${DB_SERVER}
+      PMA_USER: ${DB_USER}
+      PMA_PASSWORD: ${DB_PWD}
+      #PMA_ARBITRARY: 1 
+
+  my-app:
+    image: my-app:1.0
+    container_name: MyJavaApp
+    ports:
+      - 8080:8080
+    environment:
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PWD: ${DB_PWD}
+      DB_SERVER: ${DB_SERVER}
+    restart: always
+    depends_on:
+      - mysql
+
+volumes:
+  mysql-data:
+    driver: local
