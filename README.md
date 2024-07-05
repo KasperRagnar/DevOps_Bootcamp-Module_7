@@ -15,17 +15,17 @@ You will need to update the bellow lines depending on your system of choice.
 
 --- 
 
-There are used for connection to a database
+Database environment variables:
 `set DB_USER=`
 `set DB_PWD=`
-`set DB_ROOT_PWD=`
 `set DB_SERVER=`
 `set DB_NAME=`
+`set DB_ROOT_PWD=`
 
-this is used so the database UI can connect to the database
+Database GUI/UI environment variables
 `set PMA_PORT=`
 
-This is the ip address and port to your private docker repository (Eg. 8.8.8.8:1234)
+My Application environment variables
 `set PRIVATE_REPO_ADDRESS=`
 
 ---

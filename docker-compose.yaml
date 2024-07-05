@@ -16,23 +16,27 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PWD}
     volumes:
       - mysql-data:/var/lib/mysql
+    #command: --default-authentication-plugin=mysql_native_password 
 
   phpmyadmin:
     image: phpmyadmin:5.2
     container_name: phpmyadmin
-    restart: always
     ports:
       - 8081:80
     environment:
       PMA_HOST: ${DB_SERVER}
-      PMA_USER: ${DB_USER}
-      PMA_PASSWORD: ${DB_PWD}
-      #PMA_PORT: ${PMA_PORT}
-      #MYSQL_ROOT_PASSWORD: ${DB_ROOT_PWD}
+      PMA_PORT: ${PMA_PORT}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PWD}
+      #PMA_USER: ${DB_USER}
+      #PMA_PASSWORD: ${DB_PWD}
       #PMA_ARBITRARY: 1 
+    restart: always
+    depends_on:
+      - mysql
 
   my-app:
-    image: ${PRIVATE_REPO_ADDRESS}/my-app:1.5
+    image: ${PRIVATE_REPO_ADDRESS}/my-app:1.5   # this version uses the server IP address in index.html
+    #image: my-app:1.4                          # this version uses "localhost" hostname in index.html
     container_name: MyJavaApp
     ports:
       - 8080:8080
