@@ -25,9 +25,6 @@ There are used for connection to a database
 this is used so the database UI can connect to the database
 `set PMA_PORT=`
 
-This is the ip address or hostname of the server hosting this application
-`set HOST_SERVER=`
-
 This is the ip address and port to your private docker repository (Eg. 8.8.8.8:1234)
 `set PRIVATE_REPO_ADDRESS=`
 
