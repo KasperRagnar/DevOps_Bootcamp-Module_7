@@ -16,6 +16,7 @@ set DB_PWD=
 set DB_ROOT_PWD=
 set DB_SERVER=
 set DB_NAME=
+set PRIVATE_REPO_ADDRESS=
 ```
 
 ## In the Linux or Mac Terminal
@@ -25,4 +26,5 @@ export DB_PWD=
 export DB_ROOT_PWD=
 export DB_SERVER=
 export DB_NAME=
+export PRIVATE_REPO_ADDRESS=
 ```
