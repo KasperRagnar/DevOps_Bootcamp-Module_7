@@ -22,6 +22,9 @@ There are used for connection to a database
 `set DB_SERVER=`
 `set DB_NAME=`
 
+this is used so the database UI can connect to the database
+`set PMA_PORT=`
+
 This is the ip address or hostname of the server hosting this application
 `set HOST_SERVER=`
 
